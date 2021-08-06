@@ -32,7 +32,7 @@ const crearCuenta = () => {
               </div>
               <div className="relative mb-4">
                 <label
-                  htmlfor="password"
+                  htmlFor="password"
                   className="leading-7 text-sm text-gray-600"
                 >
                   Password
