@@ -2,22 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { useDispatch } from "react-redux";
-import { login } from "../../actions/auth";
+import { startloginEmailPassword } from "../../actions/auth";
 
 const Login = () => {
   
   const dispatch = useDispatch();
   
   const [ formValues, handelInputChange ] = useForm({
-    email:"",
-    password:""
+    email:"adrianfernandezj@gmail.com ",
+    password:"123456"
   });
 
   const { email, password } = formValues;
 
   const handleLogin = e => {
     e.preventDefault();
-    dispatch(login(12345, 'adrian'));
+    dispatch(startloginEmailPassword(email, password));
   }
   
   return (
