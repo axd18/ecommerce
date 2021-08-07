@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { useDispatch } from "react-redux";
-import { startloginEmailPassword } from "../../actions/auth";
+import { startloginEmailPassword, startGoogleLogin } from "../../actions/auth";
 
 const Login = () => {
   
@@ -18,6 +18,10 @@ const Login = () => {
   const handleLogin = e => {
     e.preventDefault();
     dispatch(startloginEmailPassword(email, password));
+  }
+
+  const handleGoogleLogin = () => {
+    dispatch(startGoogleLogin())
   }
   
   return (
@@ -69,6 +73,7 @@ const Login = () => {
           </button>
           
           <button
+            onClick={ handleGoogleLogin }
             type="submit"
             className="text-white bg-indigo-500 border-0 py-2 px-8 my-4 focus:outline-none hover:bg-indigo-600 rounded text-lg"
           >
