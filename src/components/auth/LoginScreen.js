@@ -9,8 +9,8 @@ const Login = () => {
   const dispatch = useDispatch();
   
   const [ formValues, handelInputChange ] = useForm({
-    email:"adrianfernandezj@gmail.com ",
-    password:"123456"
+    email:"",
+    password:""
   });
 
   const { email, password } = formValues;
