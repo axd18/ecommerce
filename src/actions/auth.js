@@ -30,3 +30,9 @@ export const login = (uid, displayName) => ({
     displayName,
   },
 });
+
+export const startRegister = () => {
+  return dispatch => {
+
+  }
+};

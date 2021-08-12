@@ -1,6 +1,8 @@
 import React from "react";
 import { useForm } from "../../hooks/useForm";
 import validator from 'validator';
+import { useDispatch } from "react-redux";
+import { removeError, setError } from "../../actions/ui";
 
 const Register = () => {
   
@@ -13,25 +15,30 @@ const Register = () => {
 
   const { name, email, password, password2 } = formValues;
 
+  const dispatch = useDispatch();
+
   const handleRegister = e => {
     e.preventDefault();
     if( isFormValid() ) {
-      console.log("ok")
+      console.log("Formulario correcto");
     } 
   }
 
   const isFormValid = () => {
     if(name.trim().length === 0) {
-      console.log('el nombre es requerido');
+      dispatch(setError('el nombre es requerido'))
       return false
     } else if ( !validator.isEmail(email)) {
-      console.log('El email no es valido');
+      dispatch(setError('el email no es válido'))
       return false;
     } else if ( !password === password2 || password.length < 5) {
-      console.log('El password debe contener al menos 6 caracteres');
+      dispatch(setError('el password debe contener al menos 6 caracteres'))
     }
+    dispatch(removeError());
     return true;
   }
+
+  
   
   return (
     <section className="bg-gray-200 text-gray-600 body-font">
