@@ -1,21 +1,23 @@
 import React from "react";
 import { useForm } from "../../hooks/useForm";
 import validator from 'validator';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeError, setError } from "../../actions/ui";
 
 const Register = () => {
   
+  const dispatch = useDispatch();
+  const {msgError} = useSelector(state => state.ui);
+
   const [ formValues, handelInputChange ] = useForm({
-    name:"adrian",
-    email:"adrianfernandezj@gmail.com",
-    password:"123456",
-    password2:"123456"
+    name:"",
+    email:"",
+    password:"",
+    password2:""
   });
 
   const { name, email, password, password2 } = formValues;
 
-  const dispatch = useDispatch();
 
   const handleRegister = e => {
     e.preventDefault();
@@ -26,14 +28,15 @@ const Register = () => {
 
   const isFormValid = () => {
     if(name.trim().length === 0) {
-      dispatch(setError('el nombre es requerido'))
+      dispatch(setError('El nombre es requerido'))
       return false
     } else if ( !validator.isEmail(email)) {
-      dispatch(setError('el email no es válido'))
+      dispatch(setError('El email no es válido'))
       return false;
-    } else if ( !password === password2 || password.length < 5) {
-      dispatch(setError('el password debe contener al menos 6 caracteres'))
-    }
+    } else if ( password !== password2 || password.length < 5) {
+      dispatch(setError('El password debe contener al menos 6 caracteres'))
+      return false;
+    } 
     dispatch(removeError());
     return true;
   }
@@ -48,7 +51,12 @@ const Register = () => {
         className="container px-5 py-24 mx-auto flex flex-wrap items-center justify-center"
       >
         <div className="lg:w-2/6 md:w-1/2 bg-white rounded-lg p-8 flex flex-col w-full mt-10 md:mt-0">
-        <div className="text-white bg-red-400 border-0 py-2 px-8 text-sm rounded ">Error</div>
+        {
+          msgError &&
+         ( <div className="text-white bg-red-400 border-0 py-2 px-8 text-sm rounded ">
+            { msgError }
+          </div>)
+        }
           <h2 className="text-gray-900 text-lg font-medium title-font mb-5">
             Crear Cuenta
           </h2>
@@ -74,6 +82,7 @@ const Register = () => {
               value={email}
               type="email"
               name="email"
+              placeholder="Email"
               className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
             {/* {errores.email && <p className="text-red-600 text-sm">{errores.email}</p>} */}
           </div>
@@ -85,6 +94,9 @@ const Register = () => {
               Password
             </label>
             <input
+              type="password"
+              name="password"
+              placeholder="Password"
               onChange={handelInputChange}
               value={password}
               className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
@@ -98,6 +110,9 @@ const Register = () => {
               Repite el password
             </label>
             <input
+              type="password"
+              name="password2"
+              placeholder="Password"
               onChange={handelInputChange}
               value={password2}
               className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
