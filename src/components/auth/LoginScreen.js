@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
+import validator from 'validator';
+import { removeError, setError } from "../../actions/ui";
 import { useDispatch } from "react-redux";
 import { startloginEmailPassword, startGoogleLogin } from "../../actions/auth";
 
@@ -15,14 +17,32 @@ const Login = () => {
 
   const { email, password } = formValues;
 
-  const handleLogin = e => {
-    e.preventDefault();
-    dispatch(startloginEmailPassword(email, password));
-  }
-
   const handleGoogleLogin = () => {
     dispatch(startGoogleLogin())
   }
+
+  const handleLogin = e => {
+    e.preventDefault();
+    if( isFormLoginValid() ) {
+      dispatch(startloginEmailPassword(email, password))
+    } 
+  }
+  
+  const isFormLoginValid = () => {
+    if(email.trim().length === 0) {
+      dispatch(setError('El email es requerido'))
+      return false
+    } else if ( !validator.isEmail(email)) {
+      dispatch(setError('El email no es válido'))
+      return false;
+    } else if ( password.length < 5) {
+      dispatch(setError('El password debe contener al menos 6 caracteres'))
+      return false;
+    } 
+    dispatch(removeError());
+    return true;
+  }
+  
   
   return (
     <section className="bg-gray-200 text-gray-600 body-font">
@@ -66,6 +86,7 @@ const Login = () => {
           </div>
           {/* { error && <p className="text-red-600 text-sm">{error}</p> } */}
           <button
+            onClick={ handleLogin }
             type="submit"
             className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
           >
