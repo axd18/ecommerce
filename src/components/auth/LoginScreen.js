@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import validator from 'validator';
 import { removeError, setError } from "../../actions/ui";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { startloginEmailPassword, startGoogleLogin } from "../../actions/auth";
 
 const Login = () => {
   
   const dispatch = useDispatch();
+  const { loading } = useSelector( state => state.ui )
   
   const [ formValues, handelInputChange ] = useForm({
     email:"",
@@ -86,6 +87,7 @@ const Login = () => {
           </div>
           {/* { error && <p className="text-red-600 text-sm">{error}</p> } */}
           <button
+            disabled={ loading }
             onClick={ handleLogin }
             type="submit"
             className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
