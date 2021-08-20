@@ -6,8 +6,19 @@ import LoginScreen from './components/auth/LoginScreen';
 import CrearProducto from './components/pages/CrearProducto';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
+import { useEffect } from 'react';
+import { firebase } from '../src/firebase/firebase-config';
+// import { login } from './actions/auth';
 
 function App() {
+  
+  
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      console.log(user)
+    })
+  }, [])
+  
   return (
     <Provider store={ store }>
     <Router>
