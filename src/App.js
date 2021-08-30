@@ -1,9 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import RegisterScreen from './components/auth/RegisterScreen';
-import LoginScreen from './components/auth/LoginScreen';
-import CrearProducto from './components/pages/CrearProducto';
+import { AppRouter } from './routers/AppRouter';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import { useEffect } from 'react';
@@ -21,13 +18,8 @@ function App() {
   
   return (
     <Provider store={ store }>
-    <Router>
-      <Switch>
-        <Route exact path="/" component={LoginScreen} />
-        <Route exact path="/crear-cuenta" component={RegisterScreen} />
-        <Route exact path="/crear-producto" component={CrearProducto} />
-      </Switch>
-    </Router>
+    <AppRouter />
+    
     </Provider>
     
     // <div className="App">
