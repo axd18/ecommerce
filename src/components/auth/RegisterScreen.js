@@ -97,6 +97,7 @@ const Register = () => {
             <input
               type="password"
               name="password"
+              autocomplete="on"
               placeholder="Password"
               onChange={handelInputChange}
               value={password}

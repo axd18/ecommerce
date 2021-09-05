@@ -10,7 +10,6 @@ export const AuthRouter = () => {
             <Switch>
                 <Route exact path="/auth/login" component={LoginScreen} />
                 <Route exact path="/auth/registro" component={RegisterScreen} />
-                <Route exact path="/crear-producto" component={CrearProducto} />
                 <Redirect to="/auth/login"/>
             </Switch>
         </div>
