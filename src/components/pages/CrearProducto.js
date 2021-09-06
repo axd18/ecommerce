@@ -4,6 +4,7 @@ import validator from 'validator';
 import { useDispatch, useSelector } from "react-redux";
 import { removeError, setError } from "../../actions/ui";
 import { startRegisterWithEmailPasswordName } from "../../actions/auth";
+import Header from '../header/Header';
 
 export const CrearProducto = () => {
   
@@ -45,6 +46,9 @@ export const CrearProducto = () => {
   
   
   return (
+    <>
+    <Header />
+    
     <section className="bg-gray-200 text-gray-600 body-font">
       <form
         onSubmit={handleRegister}
@@ -116,5 +120,6 @@ export const CrearProducto = () => {
         </div>
       </form>
     </section>
+    </>
   );
 };
