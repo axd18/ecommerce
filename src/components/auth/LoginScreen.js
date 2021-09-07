@@ -80,6 +80,7 @@ const Login = () => {
               type="password"
               placeholder="Password"
               name="password"
+              autoComplete="on"
               value={ password }
               onChange={ handelInputChange }
               className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
@@ -103,14 +104,14 @@ const Login = () => {
             Iniciar sesión con Google
           </button>
           
-          <div className="text-base text-gray-500 mt-2">
+          <div className="text-base text-gray-500 mt-2 cursor-pointer">
             Recuperar contraseña
           </div>
           <button
             type="submit"
             className="text-gray-400 border-2 border-gray-300 py-2 my-4 px-8 focus:outline-none hover:bg-gray-400 rounded text-lg hover:text-white hover:border-gray-400"
           >
-            <Link to="/crear-cuenta">Crear cuenta</Link>
+            <Link to="/auth/registro">Crear cuenta</Link>
           </button>
         </div>
       </form>
