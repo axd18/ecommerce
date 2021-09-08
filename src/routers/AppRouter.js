@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { AuthRouter } from './AuthRouter';
+import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute  } from './PublicRoute';
 import { Home } from '../components/pages/Home';
 import { CrearProducto } from '../components/pages/CrearProducto';
 import { firebase } from '../firebase/firebase-config';
@@ -35,9 +37,9 @@ export const AppRouter = () => {
         <Router>
             <div>
                 <Switch>
-                    <Route path="/auth" component={ AuthRouter } />
+                    <PublicRoute path="/auth" component={ AuthRouter } isAuthenticated={ IsLoggedIn }/>
                     <Route exact path="/" component={ Home } />
-                    <Route exact path="/crear-producto" component={CrearProducto} />
+                    <PrivateRoute exact isAuthenticated={ IsLoggedIn } path="/crear-producto" component={CrearProducto} />
                 </Switch>
             </div>
             
