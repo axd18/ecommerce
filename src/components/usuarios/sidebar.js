@@ -1,12 +1,19 @@
 import React from 'react';
 import { Fragment } from 'react';
+import { Route } from 'react-router';
 
 
 const sidebar = () => {
     return ( 
 
 
+
+<Route>
+    
 <Fragment>
+
+    
+
       
 <div class="flex flex-wrap bg-gray-100 w-full h-screen">
     <div class="w-3/12 bg-white rounded p-3 shadow-lg">
@@ -123,6 +130,8 @@ const sidebar = () => {
 </div>
 
 </Fragment>
+
+</Route>
 
      );
 }
