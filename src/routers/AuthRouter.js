@@ -1,5 +1,4 @@
 import { Redirect, Route, Switch } from "react-router-dom"
-import CrearProducto from '../components/pages/CrearProducto';
 import RegisterScreen from '../components/auth/RegisterScreen';
 import LoginScreen from '../components/auth/LoginScreen';
 

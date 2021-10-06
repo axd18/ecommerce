@@ -6,7 +6,7 @@ import { removeError, setError } from "../../actions/ui";
 import { startRegisterWithEmailPasswordName } from "../../actions/auth";
 import Header from '../header/Header';
 
-export const CrearProducto = () => {
+const FormCrearProducto = () => {
   
   const dispatch = useDispatch();
   const {msgError} = useSelector(state => state.ui);
@@ -123,3 +123,5 @@ export const CrearProducto = () => {
     </>
   );
 };
+
+export default FormCrearProducto;

@@ -4,7 +4,7 @@ import { AuthRouter } from './AuthRouter';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute  } from './PublicRoute';
 import { Home } from '../components/pages/Home';
-import { CrearProducto } from '../components/pages/CrearProducto';
+import { Dashboard } from '../components/pages/Dashboard';
 import { firebase } from '../firebase/firebase-config';
 import { useDispatch } from 'react-redux';
 import { login } from '../actions/auth';
@@ -39,7 +39,7 @@ export const AppRouter = () => {
                 <Switch>
                     <PublicRoute path="/auth" component={ AuthRouter } isAuthenticated={ IsLoggedIn }/>
                     <Route exact path="/" component={ Home } />
-                    <PrivateRoute exact isAuthenticated={ IsLoggedIn } path="/crear-producto" component={CrearProducto} />
+                    <PrivateRoute exact isAuthenticated={ IsLoggedIn } path="/dashboard" component={Dashboard} />
                 </Switch>
             </div>
             
