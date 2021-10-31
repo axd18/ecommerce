@@ -62,21 +62,11 @@ function Nav() {
                 
                 {/* <button type="submit" class=" right-0 top-0 mt-5 mr-4"></button> */}
               </div>
-              <div className="mx-auto mr-4">
-              <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="white"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
+              <div className="mx-auto mr-4 text-white text-2xl">
+                <i className="fa-solid fa-cart-shopping"></i>
+              </div>
+              <div className="text-white text-2xl">
+              <i className="fa-solid fa-user"></i>
               </div>
                 </div>
               </div>
@@ -188,20 +178,12 @@ function Nav() {
                 >
                   Ofertas
                 </a>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="white"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
+                <div >
+                  <button class="flex mt-6 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded-lg text-lg">Unite</button>
+                </div>
+                <div>
+                  <button class="flex mt-4 text-white border-2 border-white py-2 px-8 focus:outline-none rounded-lg text-lg">Iniciar sesión</button>
+                </div>
               </div>
             </div>
           )}
